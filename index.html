@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Minecraft资源站</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        /* 强行注入无衬线黑体与终端字体 */
+        body { 
+            background-color: #030712; 
+            color: #f9fafb; 
+            font-family: 'Consolas', 'Monaco', 'Microsoft YaHei', 'PingFang SC', monospace; 
+        }
+        
+        /* 专属霓虹悬浮光效 */
+        .fox-glow:hover { box-shadow: 0 0 25px rgba(249, 115, 22, 0.3), inset 0 0 12px rgba(249, 115, 22, 0.1); border-color: #f97316 !important; }
+        .meteor-glow:hover { box-shadow: 0 0 20px rgba(56, 189, 248, 0.4), inset 0 0 10px rgba(56, 189, 248, 0.1); border-color: #38bdf8 !important; }
+        .seed-glow:hover { box-shadow: 0 0 20px rgba(16, 185, 129, 0.4), inset 0 0 10px rgba(16, 185, 129, 0.1); border-color: #10b981 !important; }
+        .rejects-glow:hover { box-shadow: 0 0 20px rgba(239, 68, 68, 0.4), inset 0 0 10px rgba(239, 68, 68, 0.1); border-color: #ef4444 !important; }
+        .baritone-glow:hover { box-shadow: 0 0 20px rgba(168, 85, 247, 0.4), inset 0 0 10px rgba(168, 85, 247, 0.1); border-color: #a855f7 !important; }
+    </style>
+</head>
+<body class="p-6 md:p-12 max-w-6xl mx-auto selection:bg-sky-500 selection:text-white antialiased relative">
+
+    <header class="mb-10 border-b border-zinc-800 pb-6 flex flex-col md:flex-row justify-between md:items-end gap-4 text-center md:text-left">
+        <h1 class="text-4xl font-black tracking-tighter text-sky-400"># Minecraft资源站_</h1>
+        <div class="font-mono text-lime-400 font-bold tracking-widest text-lg drop-shadow-[0_0_8px_rgba(163,230,53,0.4)]">
+            @Tiegao1337
+        </div>
+    </header>
+
+    <section class="mb-12 flex justify-center">
+        <div class="bg-zinc-950 border border-zinc-800 p-8 md:p-10 rounded-2xl transition duration-300 fox-glow w-full flex flex-col md:flex-row items-center md:items-center gap-8 text-center md:text-left relative overflow-hidden">
+            <div class="absolute -top-24 -right-24 w-64 h-64 bg-orange-600/10 rounded-full blur-3xl pointer-events-none"></div>
+            
+            <div class="h-20 w-20 shrink-0 bg-orange-600/10 rounded-2xl flex items-center justify-center border border-orange-800 relative z-10">
+                <svg class="w-10 h-10 text-orange-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4"></path></svg>
+            </div>
+            
+            <div class="flex-1 relative z-10">
+                <h2 class="text-3xl font-black text-white tracking-tight mb-3">LunarFox Modpack</h2>
+                <p class="text-zinc-400 text-sm mb-5 leading-relaxed max-w-2xl">全方位优化的顶级 Minecraft 整合包。提供极致的帧率榨取、无延迟的 PvP 体验与高度定制的客户端性能强化。</p>
+                <div class="flex flex-wrap justify-center md:justify-start gap-3 font-mono text-xs">
+                    <span class="bg-zinc-900 border border-zinc-800 px-3 py-1.5 rounded text-orange-300">+ Target: Modrinth</span>
+                    <span class="bg-zinc-900 border border-zinc-800 px-3 py-1.5 rounded text-orange-300">+ Type: Optimized Modpack</span>
+                </div>
+            </div>
+            
+            <div class="w-full md:w-auto mt-4 md:mt-0 relative z-10">
+                <a href="https://modrinth.com/modpack/lunarfox" target="_blank" rel="noopener noreferrer" class="block w-full md:w-auto text-center px-8 py-4 bg-orange-700 hover:bg-orange-600 text-white font-bold rounded-xl transition fox-glow whitespace-nowrap">DOWNLOAD LUNARFOX</a>
+            </div>
+        </div>
+    </section>
+
+    <main class="grid grid-cols-1 lg:grid-cols-2 gap-8 pb-16">
+        
+        <div class="bg-zinc-950 border border-zinc-800 p-8 rounded-2xl transition duration-300 meteor-glow flex flex-col justify-between">
+            <div>
+                <div class="flex items-center mb-6">
+                    <div class="h-10 w-10 bg-sky-600/10 rounded-lg flex items-center justify-center border border-sky-800 mr-4">
+                        <svg class="w-6 h-6 text-sky-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg>
+                    </div>
+                    <h2 class="text-2xl font-black text-white tracking-tight">Meteor Client</h2>
+                </div>
+                <p class="text-zinc-400 text-sm mb-6 leading-relaxed">最强大的开源 Utility 客户端。提供顶级的 PvP、渲染优化与世界交互功能。</p>
+                <div class="text-xs space-y-2 text-zinc-600 mb-8 border-t border-zinc-800 pt-4">
+                    <p>+ Target: <span class="text-sky-300">API Direct Link</span></p>
+                    <p>+ Type: <span class="text-sky-300">Core Engine</span></p>
+                </div>
+            </div>
+            <a href="https://meteorclient.com/api/download" target="_blank" rel="noopener noreferrer" class="block w-full text-center bg-sky-600 hover:bg-sky-500 text-white font-bold py-3 rounded-lg transition meteor-glow">DOWNLOAD VIA API</a>
+        </div>
+
+        <div class="bg-zinc-950 border border-zinc-800 p-8 rounded-2xl transition duration-300 baritone-glow flex flex-col justify-between">
+            <div>
+                <div class="flex items-center mb-6">
+                    <div class="h-10 w-10 bg-purple-600/10 rounded-lg flex items-center justify-center border border-purple-800 mr-4">
+                        <svg class="w-6 h-6 text-purple-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 20l-5.447-2.724A1 1 0 013 16.382V5.618a1 1 0 011.447-.894L9 7m0 13l6-3m-6 3V7m6 10l4.553 2.276A1 1 0 0021 18.382V7.618a1 1 0 00-.553-.894L15 4m0 13V4m0 0L9 7"></path></svg>
+                    </div>
+                    <h2 class="text-2xl font-black text-white tracking-tight">Baritone</h2>
+                </div>
+                <p class="text-zinc-400 text-sm mb-6 leading-relaxed">Minecraft 的最强自动寻路与执行 AI。输入指令，松开双手，让机器为你跑图挖矿。</p>
+                <div class="text-xs space-y-2 text-zinc-600 mb-8 border-t border-zinc-800 pt-4">
+                    <p>+ Target: <span class="text-purple-300">API Direct Link</span></p>
+                    <p>+ Type: <span class="text-purple-300">Pathfinding AI</span></p>
+                </div>
+            </div>
+            <a href="https://www.meteorclient.com/api/downloadBaritone" target="_blank" rel="noopener noreferrer" class="block w-full text-center bg-purple-700 hover:bg-purple-600 text-white font-bold py-3 rounded-lg transition baritone-glow">DOWNLOAD BARITONE</a>
+        </div>
+
+        <div class="bg-zinc-950 border border-zinc-800 p-8 rounded-2xl transition duration-300 seed-glow flex flex-col justify-between">
+            <div>
+                <div class="flex items-center mb-6">
+                    <div class="h-10 w-10 bg-emerald-600/10 rounded-lg flex items-center justify-center border border-emerald-800 mr-4">
+                        <svg class="w-6 h-6 text-emerald-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg>
+                    </div>
+                    <h2 class="text-2xl font-black text-white tracking-tight">SeedCrackerX</h2>
+                </div>
+                <p class="text-zinc-400 text-sm mb-6 leading-relaxed">逆向破解服务器种子库的核心插件。通过地形特征反推服务器 Seed。</p>
+                <div class="text-xs space-y-2 text-zinc-600 mb-8 border-t border-zinc-800 pt-4">
+                    <p>+ Target: <span class="text-emerald-300">GitHub Repository</span></p>
+                    <p>+ Type: <span class="text-emerald-300">World Derivation</span></p>
+                </div>
+            </div>
+            <a href="https://github.com/19MisterX98/SeedcrackerX" target="_blank" rel="noopener noreferrer" class="block w-full text-center bg-emerald-700 hover:bg-emerald-600 text-white font-bold py-3 rounded-lg transition seed-glow">SOURCE (GITHUB)</a>
+        </div>
+
+        <div class="bg-zinc-950 border border-zinc-800 p-8 rounded-2xl transition duration-300 rejects-glow flex flex-col justify-between">
+            <div>
+                <div class="flex items-center mb-6">
+                    <div class="h-10 w-10 bg-red-600/10 rounded-lg flex items-center justify-center border border-red-800 mr-4">
+                        <svg class="w-6 h-6 text-red-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"></path></svg>
+                    </div>
+                    <h2 class="text-2xl font-black text-white tracking-tight">Meteor Rejects</h2>
+                </div>
+                <p class="text-zinc-400 text-sm mb-6 leading-relaxed">被官方移除或未收录的边缘实验性模块。包含更多极其硬核的变态级外置功能。</p>
+                <div class="text-xs space-y-2 text-zinc-600 mb-8 border-t border-zinc-800 pt-4">
+                    <p>+ Target: <span class="text-red-300">GitHub Repository</span></p>
+                    <p>+ Type: <span class="text-red-300">Experimental Add-on</span></p>
+                </div>
+            </div>
+            <a href="https://github.com/AntiCope/meteor-rejects" target="_blank" rel="noopener noreferrer" class="block w-full text-center bg-red-700 hover:bg-red-600 text-white font-bold py-3 rounded-lg transition rejects-glow">SOURCE (GITHUB)</a>
+        </div>
+
+    </main>
+
+</body>
+</html>
