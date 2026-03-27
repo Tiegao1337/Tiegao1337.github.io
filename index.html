@@ -53,8 +53,7 @@
         </div>
     </section>
 
-    <main class="grid grid-cols-1 lg:grid-cols-2 gap-8 pb-16">
-        
+    <main class="grid grid-cols-1 lg:grid-cols-2 gap-8 pb-8">
         <div class="bg-zinc-950 border border-zinc-800 p-8 rounded-2xl transition duration-300 meteor-glow flex flex-col justify-between">
             <div>
                 <div class="flex items-center mb-6">
@@ -122,8 +121,300 @@
             </div>
             <a href="https://github.com/AntiCope/meteor-rejects" target="_blank" rel="noopener noreferrer" class="block w-full text-center bg-red-700 hover:bg-red-600 text-white font-bold py-3 rounded-lg transition rejects-glow">SOURCE (GITHUB)</a>
         </div>
-
     </main>
 
+    <div class="flex justify-center mt-4 mb-16">
+        <button id="eggTriggerBtn" class="px-6 py-2 bg-red-950/40 hover:bg-red-900 border border-red-900 text-red-500 hover:text-red-300 rounded-full font-mono text-sm tracking-widest transition-all duration-300 shadow-[0_0_15px_rgba(153,27,27,0.3)]">
+            彩蛋
+        </button>
+    </div>
+
+    <div id="eggContainer" class="w-full transition-all duration-700 ease-in-out overflow-hidden max-h-0 opacity-0 rounded-2xl border border-red-800/50 shadow-[0_0_30px_rgba(239,68,68,0.15)] bg-[#1A1A1A]">
+        <iframe id="eggIframe" class="w-full h-[850px] border-none" sandbox="allow-scripts allow-same-origin"></iframe>
+    </div>
+
+    <textarea id="eggSourceCode" style="display:none;">
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>男娘指数检测 - @Tiegao1337</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
+        body { background: linear-gradient(135deg, #1A1A1A 0%, #2D2D4E 100%); color: #FFFFFF; min-height: 100vh; padding: 20px; }
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: #1A1A1A; }
+        ::-webkit-scrollbar-thumb { background: #4D4D7A; border-radius: 4px; }
+        .container { max-width: 800px; margin: 0 auto; padding: 20px; }
+        header { text-align: center; margin-bottom: 40px; padding: 20px; background: rgba(0, 0, 0, 0.3); border-radius: 20px; border: 2px solid #FF9EC3; box-shadow: 0 0 15px rgba(158, 195, 255, 0.5); }
+        h1 { font-size: 3.5rem; margin-bottom: 10px; background: linear-gradient(45deg, #FF9EC3, #9EC3FF); -webkit-background-clip: text; background-clip: text; color: transparent; text-shadow: 0 0 10px rgba(255, 158, 195, 0.5); }
+        .author { color: #9EC3FF; font-style: italic; margin-bottom: 20px; font-weight: bold; letter-spacing: 1px; }
+        .description { color: #CCCCCC; margin-bottom: 20px; line-height: 1.6; }
+        .input-section { background: rgba(0, 0, 0, 0.3); padding: 30px; border-radius: 20px; margin-bottom: 30px; text-align: center; border: 2px solid #9EC3FF; }
+        input { padding: 15px; width: 70%; border: none; border-radius: 50px; background: rgba(255, 255, 255, 0.1); color: white; font-size: 1.2rem; text-align: center; margin-right: 10px; border: 2px solid #FF9EC3; outline: none;}
+        input:focus { box-shadow: 0 0 10px rgba(255, 158, 195, 0.5); }
+        button { padding: 15px 30px; border: none; border-radius: 50px; background: linear-gradient(45deg, #FF9EC3, #9EC3FF); color: #1A1A1A; font-weight: bold; font-size: 1.2rem; cursor: pointer; transition: transform 0.3s, box-shadow 0.3s; margin: 5px; }
+        button:hover { transform: translateY(-3px); box-shadow: 0 5px 15px rgba(255, 158, 195, 0.4); }
+        button.secondary { background: linear-gradient(45deg, #6a6a8f, #4D4D7A); color: #CCCCCC; }
+        .result-section { background: rgba(0, 0, 0, 0.3); padding: 30px; border-radius: 20px; text-align: center; margin-bottom: 30px; border: 2px solid #FF9EC3; display: none; }
+        .result-title { color: #9EC3FF; margin-bottom: 20px; }
+        .score { font-size: 5rem; font-weight: bold; background: linear-gradient(45deg, #FF9EC3, #9EC3FF); -webkit-background-clip: text; background-clip: text; color: transparent; margin: 20px 0; }
+        .meter { width: 80%; height: 30px; background: rgba(255, 255, 255, 0.1); border-radius: 15px; margin: 0 auto; overflow: hidden; border: 2px solid #9EC3FF; }
+        .meter-fill { height: 100%; width: 0%; background: linear-gradient(90deg, #9EC3FF, #FF9EC3); border-radius: 15px; transition: width 1.5s ease-in-out; }
+        .analysis { margin-top: 30px; padding: 20px; background: rgba(0, 0, 0, 0.2); border-radius: 15px; text-align: left; border-left: 5px solid #FF9EC3; }
+        .analysis h3 { color: #FF9EC3; margin-bottom: 15px; }
+        .share-section { margin-top: 20px; display: flex; justify-content: center; gap: 10px; }
+        .history-section { background: rgba(0, 0, 0, 0.3); padding: 20px; border-radius: 20px; margin-bottom: 30px; border: 2px solid #9EC3FF; display: none; }
+        .history-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px; }
+        .history-title { color: #9EC3FF; }
+        .history-list { max-height: 200px; overflow-y: auto; }
+        .history-item { padding: 10px; border-bottom: 1px solid rgba(255, 255, 255, 0.1); display: flex; justify-content: space-between; cursor: pointer;}
+        .history-item:hover { background: rgba(255,255,255,0.05); }
+        .history-item:last-child { border-bottom: none; }
+        .history-name { font-weight: bold; }
+        .history-score { color: #FF9EC3; }
+        .toast { position: fixed; bottom: 20px; left: 50%; transform: translateX(-50%); background: rgba(0, 0, 0, 0.8); color: white; padding: 10px 20px; border-radius: 50px; border: 1px solid #FF9EC3; box-shadow: 0 0 10px rgba(255, 158, 195, 0.5); z-index: 1000; opacity: 0; transition: opacity 0.3s; pointer-events: none;}
+        footer { text-align: center; margin-top: 50px; color: #9EC3FF; font-size: 0.9rem; font-family: 'Consolas', monospace; }
+        @media (max-width: 768px) {
+            input { width: 100%; margin-bottom: 15px; margin-right: 0; }
+            button { width: 100%; }
+            h1 { font-size: 2.5rem; }
+            .share-section { flex-direction: column; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>男娘指数检测</h1>
+            <p class="author">Powered by @Tiegao1337</p>
+            <p class="description">输入名字，检测男娘指数。本工具仅供娱乐，结果不代表实际情况。</p>
+        </header>
+        
+        <div class="history-section" id="historySection">
+            <div class="history-header">
+                <h3 class="history-title">历史记录</h3>
+                <button onclick="clearHistory()" class="secondary">清空</button>
+            </div>
+            <div class="history-list" id="historyList"></div>
+        </div>
+        
+        <div class="input-section">
+            <input type="text" id="nameInput" placeholder="请输入名字">
+            <button onclick="calculateScore()">检测男娘指数</button>
+        </div>
+        
+        <div class="result-section" id="resultSection">
+            <h2 class="result-title">检测结果</h2>
+            <p>名字：<span id="resultName"></span></p>
+            <div class="score" id="score">0%</div>
+            <div class="meter">
+                <div class="meter-fill" id="meterFill"></div>
+            </div>
+            
+            <div class="analysis">
+                <h3>分析报告</h3>
+                <p id="analysisText">分析内容将显示在这里...</p>
+            </div>
+            
+            <div class="share-section">
+                <button onclick="shareResult()" class="secondary">分享结果</button>
+                <button onclick="copyShareCode()">复制分享口令</button>
+            </div>
+        </div>
+        
+        <footer>
+            <p>© 2026 @Tiegao1337 专属资源站 All Rights Reserved.</p>
+        </footer>
+    </div>
+
+    <div class="toast" id="toast"></div>
+
+    <script>
+        let history = JSON.parse(localStorage.getItem('boygirlTestHistory')) || [];
+        const historySection = document.getElementById('historySection');
+        const historyList = document.getElementById('historyList');
+        
+        window.onload = function() {
+            if (history.length > 0) {
+                historySection.style.display = 'block';
+                renderHistory();
+            }
+        };
+        
+        function calculateScore() {
+            const name = document.getElementById('nameInput').value.trim();
+            if (!name) { alert('请输入名字'); return; }
+            
+            document.getElementById('resultSection').style.display = 'block';
+            document.getElementById('resultName').textContent = name;
+            
+            let score = 0;
+            for (let i = 0; i < name.length; i++) {
+                score += name.charCodeAt(i);
+            }
+            score = score % 101; 
+            
+            animateScore(score);
+            generateAnalysis(name, score);
+            saveToHistory(name, score);
+        }
+        
+        function animateScore(targetScore) {
+            const scoreElement = document.getElementById('score');
+            const meterFill = document.getElementById('meterFill');
+            let currentScore = 0;
+            const increment = targetScore / 50;
+            
+            const timer = setInterval(() => {
+                currentScore += increment;
+                if (currentScore >= targetScore) {
+                    currentScore = targetScore;
+                    clearInterval(timer);
+                }
+                scoreElement.textContent = Math.round(currentScore) + '%';
+                meterFill.style.width = currentScore + '%';
+            }, 30);
+        }
+        
+        function generateAnalysis(name, score) {
+            const analysisElement = document.getElementById('analysisText');
+            let analysis = '';
+            if (score < 20) { analysis = `名字 ${name} 的男娘指数较低，你是不是对男娘有点误解`; } 
+            else if (score < 40) { analysis = `名字 ${name} 的男娘指数中等偏下，偶尔会觉得男娘很可爱`; } 
+            else if (score < 60) { analysis = `名字 ${name} 的男娘指数处于中间水平，已经不反感男娘了还萌生了成为男娘的念头`; } 
+            else if (score < 80) { analysis = `名字 ${name} 的男娘指数较高，你摸一下都会流出来吧`; } 
+            else { analysis = `名字 ${name} 的男娘指数非常高，你已经不能用淫荡来形容了`; }
+            
+            const features = ["qwq", "awa", "uwu", "owo", "pwp"];
+            analysis += " " + features[Math.floor(Math.random() * features.length)];
+            analysisElement.textContent = analysis;
+        }
+        
+        function saveToHistory(name, score) {
+            const existingIndex = history.findIndex(item => item.name === name);
+            if (existingIndex !== -1) {
+                history[existingIndex].score = score;
+                history[existingIndex].timestamp = new Date().toISOString();
+            } else {
+                history.push({ name: name, score: score, timestamp: new Date().toISOString() });
+            }
+            if (history.length > 10) history = history.slice(history.length - 10);
+            localStorage.setItem('boygirlTestHistory', JSON.stringify(history));
+            historySection.style.display = 'block';
+            renderHistory();
+        }
+        
+        function renderHistory() {
+            historyList.innerHTML = '';
+            const sortedHistory = [...history].sort((a, b) => new Date(b.timestamp) - new Date(a.timestamp));
+            sortedHistory.forEach(item => {
+                const historyItem = document.createElement('div');
+                historyItem.className = 'history-item';
+                historyItem.innerHTML = `<span class="history-name">${item.name}</span><span class="history-score">${item.score}%</span>`;
+                historyItem.addEventListener('click', () => {
+                    document.getElementById('nameInput').value = item.name;
+                    calculateScore();
+                });
+                historyList.appendChild(historyItem);
+            });
+        }
+        
+        function clearHistory() {
+            if (confirm('确定要清空历史记录吗？')) {
+                history = [];
+                localStorage.removeItem('boygirlTestHistory');
+                historySection.style.display = 'none';
+            }
+        }
+        
+        function shareResult() {
+            const name = document.getElementById('resultName').textContent;
+            const score = document.getElementById('score').textContent;
+            const analysis = document.getElementById('analysisText').textContent;
+            const shareText = `【男娘指数检测】名字 ${name} 的男娘指数是 ${score}！${analysis} 快来试试吧！\n测试提供: @Tiegao1337`;
+            
+            if (navigator.share) {
+                navigator.share({ title: '男娘指数检测结果', text: shareText, url: window.location.href })
+                .catch(() => { copyToClipboard(shareText); showToast('已复制分享文本到剪贴板'); });
+            } else {
+                copyToClipboard(shareText); showToast('已复制分享文本到剪贴板');
+            }
+        }
+        
+        function copyShareCode() {
+            const name = document.getElementById('resultName').textContent;
+            const score = document.getElementById('score').textContent;
+            const shareCode = btoa(`${name}|${score}`);
+            copyToClipboard(shareCode);
+            showToast('已复制分享口令到剪贴板');
+        }
+        
+        function copyToClipboard(text) {
+            const textarea = document.createElement('textarea');
+            textarea.value = text;
+            document.body.appendChild(textarea);
+            textarea.select();
+            document.execCommand('copy');
+            document.body.removeChild(textarea);
+        }
+        
+        function showToast(message) {
+            const toast = document.getElementById('toast');
+            toast.textContent = message;
+            toast.style.opacity = '1';
+            setTimeout(() => { toast.style.opacity = '0'; }, 2000);
+        }
+    </script>
+</body>
+</html>
+    </textarea>
+
+    <script>
+        const triggerBtn = document.getElementById('eggTriggerBtn');
+        const container = document.getElementById('eggContainer');
+        const iframe = document.getElementById('eggIframe');
+        
+        // 这里直接取 textarea 里面的原始值，没有任何替换和 Bug 风险
+        const sourceCode = document.getElementById('eggSourceCode').value;
+        
+        let isEggOpen = false;
+
+        triggerBtn.addEventListener('click', () => {
+            isEggOpen = !isEggOpen;
+            
+            if (isEggOpen) {
+                // 首次打开时，将代码注入 iframe
+                if (!iframe.srcdoc) {
+                    iframe.srcdoc = sourceCode;
+                }
+                
+                // 展开动画
+                container.classList.remove('max-h-0', 'opacity-0');
+                container.classList.add('max-h-[900px]', 'opacity-100', 'mb-16');
+                
+                // 按钮样式变成“开启状态”
+                triggerBtn.textContent = '收起彩蛋';
+                triggerBtn.classList.remove('bg-red-950/40', 'text-red-500');
+                triggerBtn.classList.add('bg-red-600', 'text-white', 'shadow-[0_0_20px_rgba(220,38,38,0.6)]');
+                
+                // 自动滚动到底部
+                setTimeout(() => {
+                    window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' });
+                }, 300);
+                
+            } else {
+                // 收起动画
+                container.classList.remove('max-h-[900px]', 'opacity-100', 'mb-16');
+                container.classList.add('max-h-0', 'opacity-0');
+                
+                // 恢复按钮样式
+                triggerBtn.textContent = '彩蛋';
+                triggerBtn.classList.remove('bg-red-600', 'text-white', 'shadow-[0_0_20px_rgba(220,38,38,0.6)]');
+                triggerBtn.classList.add('bg-red-950/40', 'text-red-500');
+            }
+        });
+    </script>
 </body>
 </html>
