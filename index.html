@@ -130,7 +130,7 @@
     </div>
 
     <div id="eggContainer" class="w-full transition-all duration-700 ease-in-out overflow-hidden max-h-0 opacity-0 rounded-2xl border border-red-800/50 shadow-[0_0_30px_rgba(239,68,68,0.15)] bg-[#1A1A1A]">
-        <iframe id="eggIframe" class="w-full h-[850px] border-none" sandbox="allow-scripts allow-same-origin"></iframe>
+        <iframe id="eggIframe" class="w-full h-[850px] border-none" sandbox="allow-scripts allow-same-origin allow-modals"></iframe>
     </div>
 
     <textarea id="eggSourceCode" style="display:none;">
@@ -321,12 +321,11 @@
             });
         }
         
+        // 已修复：移除确认弹窗，实现瞬间斩杀清空
         function clearHistory() {
-            if (confirm('确定要清空历史记录吗？')) {
-                history = [];
-                localStorage.removeItem('boygirlTestHistory');
-                historySection.style.display = 'none';
-            }
+            history = [];
+            localStorage.removeItem('boygirlTestHistory');
+            historySection.style.display = 'none';
         }
         
         function shareResult() {
