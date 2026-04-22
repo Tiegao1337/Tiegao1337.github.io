@@ -1,419 +1,351 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Minecraft资源站</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <style>
-        /* 强行注入无衬线黑体与终端字体 */
-        body { 
-            background-color: #030712; 
-            color: #f9fafb; 
-            font-family: 'Consolas', 'Monaco', 'Microsoft YaHei', 'PingFang SC', monospace; 
-        }
-        
-        /* 专属霓虹悬浮光效 */
-        .fox-glow:hover { box-shadow: 0 0 25px rgba(249, 115, 22, 0.3), inset 0 0 12px rgba(249, 115, 22, 0.1); border-color: #f97316 !important; }
-        .meteor-glow:hover { box-shadow: 0 0 20px rgba(56, 189, 248, 0.4), inset 0 0 10px rgba(56, 189, 248, 0.1); border-color: #38bdf8 !important; }
-        .seed-glow:hover { box-shadow: 0 0 20px rgba(16, 185, 129, 0.4), inset 0 0 10px rgba(16, 185, 129, 0.1); border-color: #10b981 !important; }
-        .rejects-glow:hover { box-shadow: 0 0 20px rgba(239, 68, 68, 0.4), inset 0 0 10px rgba(239, 68, 68, 0.1); border-color: #ef4444 !important; }
-        .baritone-glow:hover { box-shadow: 0 0 20px rgba(168, 85, 247, 0.4), inset 0 0 10px rgba(168, 85, 247, 0.1); border-color: #a855f7 !important; }
-    </style>
-</head>
-<body class="p-6 md:p-12 max-w-6xl mx-auto selection:bg-sky-500 selection:text-white antialiased relative">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SpeedSMP 更新日志</title>
+  <style>
+    :root {
+      --bg: #08111f;
+      --bg-soft: #0f1c32;
+      --panel: rgba(11, 23, 42, 0.82);
+      --panel-border: rgba(130, 177, 255, 0.16);
+      --text: #f4f7fb;
+      --muted: #9fb0ca;
+      --accent: #72e4c9;
+      --accent-strong: #4bbdff;
+      --line: rgba(114, 228, 201, 0.28);
+      --shadow: 0 24px 60px rgba(0, 0, 0, 0.35);
+    }
 
-    <header class="mb-10 border-b border-zinc-800 pb-6 flex flex-col md:flex-row justify-between md:items-end gap-4 text-center md:text-left">
-        <h1 class="text-4xl font-black tracking-tighter text-sky-400"># Minecraft资源站_</h1>
-        <div class="font-mono text-lime-400 font-bold tracking-widest text-lg drop-shadow-[0_0_8px_rgba(163,230,53,0.4)]">
-            @Tiegao1337
-        </div>
-    </header>
+    * {
+      box-sizing: border-box;
+    }
 
-    <section class="mb-12 flex justify-center">
-        <div class="bg-zinc-950 border border-zinc-800 p-8 md:p-10 rounded-2xl transition duration-300 fox-glow w-full flex flex-col md:flex-row items-center md:items-center gap-8 text-center md:text-left relative overflow-hidden">
-            <div class="absolute -top-24 -right-24 w-64 h-64 bg-orange-600/10 rounded-full blur-3xl pointer-events-none"></div>
-            
-            <div class="h-20 w-20 shrink-0 bg-orange-600/10 rounded-2xl flex items-center justify-center border border-orange-800 relative z-10">
-                <svg class="w-10 h-10 text-orange-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4"></path></svg>
-            </div>
-            
-            <div class="flex-1 relative z-10">
-                <h2 class="text-3xl font-black text-white tracking-tight mb-3">LunarFox Modpack</h2>
-                <p class="text-zinc-400 text-sm mb-5 leading-relaxed max-w-2xl">全方位优化的顶级 Minecraft 整合包。提供极致的帧率榨取、无延迟的 PvP 体验与高度定制的客户端性能强化。</p>
-                <div class="flex flex-wrap justify-center md:justify-start gap-3 font-mono text-xs">
-                    <span class="bg-zinc-900 border border-zinc-800 px-3 py-1.5 rounded text-orange-300">+ Target: Modrinth</span>
-                    <span class="bg-zinc-900 border border-zinc-800 px-3 py-1.5 rounded text-orange-300">+ Type: Optimized Modpack</span>
-                </div>
-            </div>
-            
-            <div class="w-full md:w-auto mt-4 md:mt-0 relative z-10">
-                <a href="https://modrinth.com/modpack/lunarfox" target="_blank" rel="noopener noreferrer" class="block w-full md:w-auto text-center px-8 py-4 bg-orange-700 hover:bg-orange-600 text-white font-bold rounded-xl transition fox-glow whitespace-nowrap">DOWNLOAD LUNARFOX</a>
-            </div>
-        </div>
-    </section>
+    body {
+      margin: 0;
+      min-height: 100vh;
+      color: var(--text);
+      font-family: "Segoe UI", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+      background:
+        radial-gradient(circle at top left, rgba(75, 189, 255, 0.24), transparent 34%),
+        radial-gradient(circle at top right, rgba(114, 228, 201, 0.18), transparent 28%),
+        linear-gradient(160deg, #040912 0%, #091223 46%, #06101d 100%);
+    }
 
-    <main class="grid grid-cols-1 lg:grid-cols-2 gap-8 pb-8">
-        <div class="bg-zinc-950 border border-zinc-800 p-8 rounded-2xl transition duration-300 meteor-glow flex flex-col justify-between">
-            <div>
-                <div class="flex items-center mb-6">
-                    <div class="h-10 w-10 bg-sky-600/10 rounded-lg flex items-center justify-center border border-sky-800 mr-4">
-                        <svg class="w-6 h-6 text-sky-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg>
-                    </div>
-                    <h2 class="text-2xl font-black text-white tracking-tight">Meteor Client</h2>
-                </div>
-                <p class="text-zinc-400 text-sm mb-6 leading-relaxed">最强大的开源 Utility 客户端。提供顶级的 PvP、渲染优化与世界交互功能。</p>
-                <div class="text-xs space-y-2 text-zinc-600 mb-8 border-t border-zinc-800 pt-4">
-                    <p>+ Target: <span class="text-sky-300">API Direct Link</span></p>
-                    <p>+ Type: <span class="text-sky-300">Core Engine</span></p>
-                </div>
-            </div>
-            <a href="https://meteorclient.com/api/download" target="_blank" rel="noopener noreferrer" class="block w-full text-center bg-sky-600 hover:bg-sky-500 text-white font-bold py-3 rounded-lg transition meteor-glow">DOWNLOAD VIA API</a>
-        </div>
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      background-image:
+        linear-gradient(rgba(255, 255, 255, 0.025) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255, 255, 255, 0.025) 1px, transparent 1px);
+      background-size: 32px 32px;
+      mask-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.5), transparent 85%);
+    }
 
-        <div class="bg-zinc-950 border border-zinc-800 p-8 rounded-2xl transition duration-300 baritone-glow flex flex-col justify-between">
-            <div>
-                <div class="flex items-center mb-6">
-                    <div class="h-10 w-10 bg-purple-600/10 rounded-lg flex items-center justify-center border border-purple-800 mr-4">
-                        <svg class="w-6 h-6 text-purple-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 20l-5.447-2.724A1 1 0 013 16.382V5.618a1 1 0 011.447-.894L9 7m0 13l6-3m-6 3V7m6 10l4.553 2.276A1 1 0 0021 18.382V7.618a1 1 0 00-.553-.894L15 4m0 13V4m0 0L9 7"></path></svg>
-                    </div>
-                    <h2 class="text-2xl font-black text-white tracking-tight">Baritone</h2>
-                </div>
-                <p class="text-zinc-400 text-sm mb-6 leading-relaxed">Minecraft 的最强自动寻路与执行 AI。输入指令，松开双手，让机器为你跑图挖矿。</p>
-                <div class="text-xs space-y-2 text-zinc-600 mb-8 border-t border-zinc-800 pt-4">
-                    <p>+ Target: <span class="text-purple-300">API Direct Link</span></p>
-                    <p>+ Type: <span class="text-purple-300">Pathfinding AI</span></p>
-                </div>
-            </div>
-            <a href="https://www.meteorclient.com/api/downloadBaritone" target="_blank" rel="noopener noreferrer" class="block w-full text-center bg-purple-700 hover:bg-purple-600 text-white font-bold py-3 rounded-lg transition baritone-glow">DOWNLOAD BARITONE</a>
-        </div>
+    .container {
+      width: min(1100px, calc(100% - 32px));
+      margin: 0 auto;
+      padding: 48px 0 72px;
+    }
 
-        <div class="bg-zinc-950 border border-zinc-800 p-8 rounded-2xl transition duration-300 seed-glow flex flex-col justify-between">
-            <div>
-                <div class="flex items-center mb-6">
-                    <div class="h-10 w-10 bg-emerald-600/10 rounded-lg flex items-center justify-center border border-emerald-800 mr-4">
-                        <svg class="w-6 h-6 text-emerald-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg>
-                    </div>
-                    <h2 class="text-2xl font-black text-white tracking-tight">SeedCrackerX</h2>
-                </div>
-                <p class="text-zinc-400 text-sm mb-6 leading-relaxed">逆向破解服务器种子库的核心插件。通过地形特征反推服务器 Seed。</p>
-                <div class="text-xs space-y-2 text-zinc-600 mb-8 border-t border-zinc-800 pt-4">
-                    <p>+ Target: <span class="text-emerald-300">GitHub Repository</span></p>
-                    <p>+ Type: <span class="text-emerald-300">World Derivation</span></p>
-                </div>
-            </div>
-            <a href="https://github.com/19MisterX98/SeedcrackerX" target="_blank" rel="noopener noreferrer" class="block w-full text-center bg-emerald-700 hover:bg-emerald-600 text-white font-bold py-3 rounded-lg transition seed-glow">SOURCE (GITHUB)</a>
-        </div>
+    .hero {
+      position: relative;
+      overflow: hidden;
+      padding: 40px;
+      border: 1px solid var(--panel-border);
+      border-radius: 28px;
+      background: linear-gradient(145deg, rgba(15, 28, 50, 0.92), rgba(7, 15, 28, 0.88));
+      box-shadow: var(--shadow);
+      backdrop-filter: blur(12px);
+    }
 
-        <div class="bg-zinc-950 border border-zinc-800 p-8 rounded-2xl transition duration-300 rejects-glow flex flex-col justify-between">
-            <div>
-                <div class="flex items-center mb-6">
-                    <div class="h-10 w-10 bg-red-600/10 rounded-lg flex items-center justify-center border border-red-800 mr-4">
-                        <svg class="w-6 h-6 text-red-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"></path></svg>
-                    </div>
-                    <h2 class="text-2xl font-black text-white tracking-tight">Meteor Rejects</h2>
-                </div>
-                <p class="text-zinc-400 text-sm mb-6 leading-relaxed">被官方移除或未收录的边缘实验性模块。包含更多极其硬核的变态级外置功能。</p>
-                <div class="text-xs space-y-2 text-zinc-600 mb-8 border-t border-zinc-800 pt-4">
-                    <p>+ Target: <span class="text-red-300">GitHub Repository</span></p>
-                    <p>+ Type: <span class="text-red-300">Experimental Add-on</span></p>
-                </div>
-            </div>
-            <a href="https://github.com/AntiCope/meteor-rejects" target="_blank" rel="noopener noreferrer" class="block w-full text-center bg-red-700 hover:bg-red-600 text-white font-bold py-3 rounded-lg transition rejects-glow">SOURCE (GITHUB)</a>
-        </div>
-    </main>
+    .hero::after {
+      content: "";
+      position: absolute;
+      right: -80px;
+      top: -80px;
+      width: 240px;
+      height: 240px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(114, 228, 201, 0.28), transparent 70%);
+    }
 
-    <div class="flex justify-center mt-4 mb-16">
-        <button id="eggTriggerBtn" class="px-6 py-2 bg-red-950/40 hover:bg-red-900 border border-red-900 text-red-500 hover:text-red-300 rounded-full font-mono text-sm tracking-widest transition-all duration-300 shadow-[0_0_15px_rgba(153,27,27,0.3)]">
-            彩蛋
-        </button>
-    </div>
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 8px 14px;
+      border: 1px solid rgba(114, 228, 201, 0.25);
+      border-radius: 999px;
+      color: var(--accent);
+      background: rgba(114, 228, 201, 0.08);
+      letter-spacing: 0.08em;
+      font-size: 12px;
+      text-transform: uppercase;
+    }
 
-    <div id="eggContainer" class="w-full transition-all duration-700 ease-in-out overflow-hidden max-h-0 opacity-0 rounded-2xl border border-red-800/50 shadow-[0_0_30px_rgba(239,68,68,0.15)] bg-[#1A1A1A]">
-        <iframe id="eggIframe" class="w-full h-[850px] border-none" sandbox="allow-scripts allow-same-origin allow-modals"></iframe>
-    </div>
+    .hero-title {
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+      gap: 20px;
+      margin: 18px 0 10px;
+      flex-wrap: wrap;
+    }
 
-    <textarea id="eggSourceCode" style="display:none;">
-<!DOCTYPE html>
-<html lang="zh-CN">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>男娘指数检测 - @Tiegao1337</title>
-    <style>
-        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
-        body { background: linear-gradient(135deg, #1A1A1A 0%, #2D2D4E 100%); color: #FFFFFF; min-height: 100vh; padding: 20px; }
-        ::-webkit-scrollbar { width: 8px; }
-        ::-webkit-scrollbar-track { background: #1A1A1A; }
-        ::-webkit-scrollbar-thumb { background: #4D4D7A; border-radius: 4px; }
-        .container { max-width: 800px; margin: 0 auto; padding: 20px; }
-        header { text-align: center; margin-bottom: 40px; padding: 20px; background: rgba(0, 0, 0, 0.3); border-radius: 20px; border: 2px solid #FF9EC3; box-shadow: 0 0 15px rgba(158, 195, 255, 0.5); }
-        h1 { font-size: 3.5rem; margin-bottom: 10px; background: linear-gradient(45deg, #FF9EC3, #9EC3FF); -webkit-background-clip: text; background-clip: text; color: transparent; text-shadow: 0 0 10px rgba(255, 158, 195, 0.5); }
-        .author { color: #9EC3FF; font-style: italic; margin-bottom: 20px; font-weight: bold; letter-spacing: 1px; }
-        .description { color: #CCCCCC; margin-bottom: 20px; line-height: 1.6; }
-        .input-section { background: rgba(0, 0, 0, 0.3); padding: 30px; border-radius: 20px; margin-bottom: 30px; text-align: center; border: 2px solid #9EC3FF; }
-        input { padding: 15px; width: 70%; border: none; border-radius: 50px; background: rgba(255, 255, 255, 0.1); color: white; font-size: 1.2rem; text-align: center; margin-right: 10px; border: 2px solid #FF9EC3; outline: none;}
-        input:focus { box-shadow: 0 0 10px rgba(255, 158, 195, 0.5); }
-        button { padding: 15px 30px; border: none; border-radius: 50px; background: linear-gradient(45deg, #FF9EC3, #9EC3FF); color: #1A1A1A; font-weight: bold; font-size: 1.2rem; cursor: pointer; transition: transform 0.3s, box-shadow 0.3s; margin: 5px; }
-        button:hover { transform: translateY(-3px); box-shadow: 0 5px 15px rgba(255, 158, 195, 0.4); }
-        button.secondary { background: linear-gradient(45deg, #6a6a8f, #4D4D7A); color: #CCCCCC; }
-        .result-section { background: rgba(0, 0, 0, 0.3); padding: 30px; border-radius: 20px; text-align: center; margin-bottom: 30px; border: 2px solid #FF9EC3; display: none; }
-        .result-title { color: #9EC3FF; margin-bottom: 20px; }
-        .score { font-size: 5rem; font-weight: bold; background: linear-gradient(45deg, #FF9EC3, #9EC3FF); -webkit-background-clip: text; background-clip: text; color: transparent; margin: 20px 0; }
-        .meter { width: 80%; height: 30px; background: rgba(255, 255, 255, 0.1); border-radius: 15px; margin: 0 auto; overflow: hidden; border: 2px solid #9EC3FF; }
-        .meter-fill { height: 100%; width: 0%; background: linear-gradient(90deg, #9EC3FF, #FF9EC3); border-radius: 15px; transition: width 1.5s ease-in-out; }
-        .analysis { margin-top: 30px; padding: 20px; background: rgba(0, 0, 0, 0.2); border-radius: 15px; text-align: left; border-left: 5px solid #FF9EC3; }
-        .analysis h3 { color: #FF9EC3; margin-bottom: 15px; }
-        .share-section { margin-top: 20px; display: flex; justify-content: center; gap: 10px; }
-        .history-section { background: rgba(0, 0, 0, 0.3); padding: 20px; border-radius: 20px; margin-bottom: 30px; border: 2px solid #9EC3FF; display: none; }
-        .history-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px; }
-        .history-title { color: #9EC3FF; }
-        .history-list { max-height: 200px; overflow-y: auto; }
-        .history-item { padding: 10px; border-bottom: 1px solid rgba(255, 255, 255, 0.1); display: flex; justify-content: space-between; cursor: pointer;}
-        .history-item:hover { background: rgba(255,255,255,0.05); }
-        .history-item:last-child { border-bottom: none; }
-        .history-name { font-weight: bold; }
-        .history-score { color: #FF9EC3; }
-        .toast { position: fixed; bottom: 20px; left: 50%; transform: translateX(-50%); background: rgba(0, 0, 0, 0.8); color: white; padding: 10px 20px; border-radius: 50px; border: 1px solid #FF9EC3; box-shadow: 0 0 10px rgba(255, 158, 195, 0.5); z-index: 1000; opacity: 0; transition: opacity 0.3s; pointer-events: none;}
-        footer { text-align: center; margin-top: 50px; color: #9EC3FF; font-size: 0.9rem; font-family: 'Consolas', monospace; }
-        @media (max-width: 768px) {
-            input { width: 100%; margin-bottom: 15px; margin-right: 0; }
-            button { width: 100%; }
-            h1 { font-size: 2.5rem; }
-            .share-section { flex-direction: column; }
-        }
-    </style>
+    h1 {
+      margin: 0;
+      font-size: clamp(42px, 8vw, 88px);
+      line-height: 0.96;
+      letter-spacing: -0.04em;
+    }
+
+    .qq-group {
+      padding: 12px 16px;
+      border: 1px solid rgba(114, 228, 201, 0.22);
+      border-radius: 16px;
+      background: rgba(114, 228, 201, 0.08);
+      color: #dffdf5;
+      font-size: 15px;
+      font-weight: 600;
+      white-space: nowrap;
+    }
+
+    .subtitle {
+      max-width: 720px;
+      margin: 0;
+      color: var(--muted);
+      font-size: 18px;
+      line-height: 1.7;
+    }
+
+    .meta {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 16px;
+      margin-top: 28px;
+    }
+
+    .meta-card {
+      padding: 18px 20px;
+      border-radius: 20px;
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      background: rgba(255, 255, 255, 0.04);
+    }
+
+    .meta-label {
+      display: block;
+      margin-bottom: 8px;
+      color: var(--muted);
+      font-size: 13px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .meta-value {
+      font-size: 24px;
+      font-weight: 700;
+    }
+
+    .section-title {
+      margin: 44px 0 24px;
+      font-size: 24px;
+      letter-spacing: 0.04em;
+    }
+
+    .timeline {
+      position: relative;
+      display: grid;
+      gap: 22px;
+      padding-left: 24px;
+    }
+
+    .timeline::before {
+      content: "";
+      position: absolute;
+      left: 6px;
+      top: 10px;
+      bottom: 10px;
+      width: 2px;
+      background: linear-gradient(to bottom, rgba(75, 189, 255, 0.18), var(--line));
+    }
+
+    .entry {
+      position: relative;
+      padding: 24px 24px 24px 28px;
+      border: 1px solid var(--panel-border);
+      border-radius: 24px;
+      background: var(--panel);
+      box-shadow: var(--shadow);
+      backdrop-filter: blur(10px);
+    }
+
+    .entry::before {
+      content: "";
+      position: absolute;
+      left: -24px;
+      top: 30px;
+      width: 14px;
+      height: 14px;
+      border: 3px solid var(--bg);
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--accent), var(--accent-strong));
+      box-shadow: 0 0 0 6px rgba(114, 228, 201, 0.08);
+    }
+
+    .entry-date {
+      margin: 0 0 14px;
+      font-size: 28px;
+      font-weight: 800;
+      letter-spacing: -0.03em;
+    }
+
+    .entry ul {
+      margin: 0;
+      padding-left: 20px;
+      color: #dbe6f7;
+      line-height: 1.9;
+      font-size: 16px;
+    }
+
+    .entry li + li {
+      margin-top: 4px;
+    }
+
+    .footer-note {
+      margin-top: 28px;
+      color: var(--muted);
+      font-size: 14px;
+      text-align: center;
+    }
+
+    @media (max-width: 720px) {
+      .container {
+        width: min(100% - 20px, 1100px);
+        padding: 22px 0 40px;
+      }
+
+      .hero {
+        padding: 28px 22px;
+        border-radius: 22px;
+      }
+
+      .subtitle {
+        font-size: 16px;
+      }
+
+      .hero-title {
+        align-items: flex-start;
+      }
+
+      .qq-group {
+        width: 100%;
+        white-space: normal;
+      }
+
+      .meta {
+        grid-template-columns: 1fr;
+      }
+
+      .timeline {
+        padding-left: 18px;
+      }
+
+      .entry {
+        padding: 20px 18px 20px 22px;
+      }
+
+      .entry::before {
+        left: -18px;
+      }
+
+      .entry-date {
+        font-size: 22px;
+      }
+    }
+  </style>
 </head>
 <body>
-    <div class="container">
-        <header>
-            <h1>男娘指数检测</h1>
-            <p class="author">Powered by @Tiegao1337</p>
-            <p class="description">输入名字，检测男娘指数。本工具仅供娱乐，结果不代表实际情况。</p>
-        </header>
-        
-        <div class="history-section" id="historySection">
-            <div class="history-header">
-                <h3 class="history-title">历史记录</h3>
-                <button onclick="clearHistory()" class="secondary">清空</button>
-            </div>
-            <div class="history-list" id="historyList"></div>
-        </div>
-        
-        <div class="input-section">
-            <input type="text" id="nameInput" placeholder="请输入名字">
-            <button onclick="calculateScore()">检测男娘指数</button>
-        </div>
-        
-        <div class="result-section" id="resultSection">
-            <h2 class="result-title">检测结果</h2>
-            <p>名字：<span id="resultName"></span></p>
-            <div class="score" id="score">0%</div>
-            <div class="meter">
-                <div class="meter-fill" id="meterFill"></div>
-            </div>
-            
-            <div class="analysis">
-                <h3>分析报告</h3>
-                <p id="analysisText">分析内容将显示在这里...</p>
-            </div>
-            
-            <div class="share-section">
-                <button onclick="shareResult()" class="secondary">分享结果</button>
-                <button onclick="copyShareCode()">复制分享口令</button>
-            </div>
-        </div>
-        
-        <footer>
-            <p>© 2026 @Tiegao1337 专属资源站 All Rights Reserved.</p>
-        </footer>
-    </div>
+  <main class="container">
+    <section class="hero">
+      <div class="eyebrow">Server Changelog</div>
+      <div class="hero-title">
+        <h1>SpeedSMP</h1>
+        <div class="qq-group">QQ交流群：399045429</div>
+      </div>
+      <p class="subtitle">一个纯公益的无政府SMP服务器</p>
 
-    <div class="toast" id="toast"></div>
+      <div class="meta">
+        <article class="meta-card">
+          <span class="meta-label">当前版本</span>
+          <span class="meta-value">1.21.11</span>
+        </article>
+        <article class="meta-card">
+          <span class="meta-label">最后更新时间</span>
+          <span class="meta-value">2026-04-22</span>
+        </article>
+      </div>
+    </section>
 
-    <script>
-        let history = JSON.parse(localStorage.getItem('boygirlTestHistory')) || [];
-        const historySection = document.getElementById('historySection');
-        const historyList = document.getElementById('historyList');
-        
-        window.onload = function() {
-            if (history.length > 0) {
-                historySection.style.display = 'block';
-                renderHistory();
-            }
-        };
-        
-        function calculateScore() {
-            const name = document.getElementById('nameInput').value.trim();
-            if (!name) { alert('请输入名字'); return; }
-            
-            document.getElementById('resultSection').style.display = 'block';
-            document.getElementById('resultName').textContent = name;
-            
-            let score = 0;
-            for (let i = 0; i < name.length; i++) {
-                score += name.charCodeAt(i);
-            }
-            score = score % 101; 
-            
-            animateScore(score);
-            generateAnalysis(name, score);
-            saveToHistory(name, score);
-        }
-        
-        function animateScore(targetScore) {
-            const scoreElement = document.getElementById('score');
-            const meterFill = document.getElementById('meterFill');
-            let currentScore = 0;
-            const increment = targetScore / 50;
-            
-            const timer = setInterval(() => {
-                currentScore += increment;
-                if (currentScore >= targetScore) {
-                    currentScore = targetScore;
-                    clearInterval(timer);
-                }
-                scoreElement.textContent = Math.round(currentScore) + '%';
-                meterFill.style.width = currentScore + '%';
-            }, 30);
-        }
-        
-        function generateAnalysis(name, score) {
-            const analysisElement = document.getElementById('analysisText');
-            let analysis = '';
-            if (score < 20) { analysis = `名字 ${name} 的男娘指数较低，你是不是对男娘有点误解`; } 
-            else if (score < 40) { analysis = `名字 ${name} 的男娘指数中等偏下，偶尔会觉得男娘很可爱`; } 
-            else if (score < 60) { analysis = `名字 ${name} 的男娘指数处于中间水平，已经不反感男娘了还萌生了成为男娘的念头`; } 
-            else if (score < 80) { analysis = `名字 ${name} 的男娘指数较高，你摸一下都会流出来吧`; } 
-            else { analysis = `名字 ${name} 的男娘指数非常高，你已经不能用淫荡来形容了`; }
-            
-            const features = ["qwq", "awa", "uwu", "owo", "pwp"];
-            analysis += " " + features[Math.floor(Math.random() * features.length)];
-            analysisElement.textContent = analysis;
-        }
-        
-        function saveToHistory(name, score) {
-            const existingIndex = history.findIndex(item => item.name === name);
-            if (existingIndex !== -1) {
-                history[existingIndex].score = score;
-                history[existingIndex].timestamp = new Date().toISOString();
-            } else {
-                history.push({ name: name, score: score, timestamp: new Date().toISOString() });
-            }
-            if (history.length > 10) history = history.slice(history.length - 10);
-            localStorage.setItem('boygirlTestHistory', JSON.stringify(history));
-            historySection.style.display = 'block';
-            renderHistory();
-        }
-        
-        function renderHistory() {
-            historyList.innerHTML = '';
-            const sortedHistory = [...history].sort((a, b) => new Date(b.timestamp) - new Date(a.timestamp));
-            sortedHistory.forEach(item => {
-                const historyItem = document.createElement('div');
-                historyItem.className = 'history-item';
-                historyItem.innerHTML = `<span class="history-name">${item.name}</span><span class="history-score">${item.score}%</span>`;
-                historyItem.addEventListener('click', () => {
-                    document.getElementById('nameInput').value = item.name;
-                    calculateScore();
-                });
-                historyList.appendChild(historyItem);
-            });
-        }
-        
-        // 已修复：移除确认弹窗，实现瞬间斩杀清空
-        function clearHistory() {
-            history = [];
-            localStorage.removeItem('boygirlTestHistory');
-            historySection.style.display = 'none';
-        }
-        
-        function shareResult() {
-            const name = document.getElementById('resultName').textContent;
-            const score = document.getElementById('score').textContent;
-            const analysis = document.getElementById('analysisText').textContent;
-            const shareText = `【男娘指数检测】名字 ${name} 的男娘指数是 ${score}！${analysis} 快来试试吧！\n测试提供: @Tiegao1337`;
-            
-            if (navigator.share) {
-                navigator.share({ title: '男娘指数检测结果', text: shareText, url: window.location.href })
-                .catch(() => { copyToClipboard(shareText); showToast('已复制分享文本到剪贴板'); });
-            } else {
-                copyToClipboard(shareText); showToast('已复制分享文本到剪贴板');
-            }
-        }
-        
-        function copyShareCode() {
-            const name = document.getElementById('resultName').textContent;
-            const score = document.getElementById('score').textContent;
-            const shareCode = btoa(`${name}|${score}`);
-            copyToClipboard(shareCode);
-            showToast('已复制分享口令到剪贴板');
-        }
-        
-        function copyToClipboard(text) {
-            const textarea = document.createElement('textarea');
-            textarea.value = text;
-            document.body.appendChild(textarea);
-            textarea.select();
-            document.execCommand('copy');
-            document.body.removeChild(textarea);
-        }
-        
-        function showToast(message) {
-            const toast = document.getElementById('toast');
-            toast.textContent = message;
-            toast.style.opacity = '1';
-            setTimeout(() => { toast.style.opacity = '0'; }, 2000);
-        }
-    </script>
-</body>
-</html>
-    </textarea>
+    <h2 class="section-title">更新记录</h2>
 
-    <script>
-        const triggerBtn = document.getElementById('eggTriggerBtn');
-        const container = document.getElementById('eggContainer');
-        const iframe = document.getElementById('eggIframe');
-        
-        // 这里直接取 textarea 里面的原始值，没有任何替换和 Bug 风险
-        const sourceCode = document.getElementById('eggSourceCode').value;
-        
-        let isEggOpen = false;
+    <section class="timeline">
+      <article class="entry">
+        <h3 class="entry-date">2026-04-22</h3>
+        <ul>
+          <li>更新了Kitin核心的版本</li>
+          <li>优化了服务器内存分配</li>
+        </ul>
+      </article>
 
-        triggerBtn.addEventListener('click', () => {
-            isEggOpen = !isEggOpen;
-            
-            if (isEggOpen) {
-                // 首次打开时，将代码注入 iframe
-                if (!iframe.srcdoc) {
-                    iframe.srcdoc = sourceCode;
-                }
-                
-                // 展开动画
-                container.classList.remove('max-h-0', 'opacity-0');
-                container.classList.add('max-h-[900px]', 'opacity-100', 'mb-16');
-                
-                // 按钮样式变成“开启状态”
-                triggerBtn.textContent = '收起彩蛋';
-                triggerBtn.classList.remove('bg-red-950/40', 'text-red-500');
-                triggerBtn.classList.add('bg-red-600', 'text-white', 'shadow-[0_0_20px_rgba(220,38,38,0.6)]');
-                
-                // 自动滚动到底部
-                setTimeout(() => {
-                    window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' });
-                }, 300);
-                
-            } else {
-                // 收起动画
-                container.classList.remove('max-h-[900px]', 'opacity-100', 'mb-16');
-                container.classList.add('max-h-0', 'opacity-0');
-                
-                // 恢复按钮样式
-                triggerBtn.textContent = '彩蛋';
-                triggerBtn.classList.remove('bg-red-600', 'text-white', 'shadow-[0_0_20px_rgba(220,38,38,0.6)]');
-                triggerBtn.classList.add('bg-red-950/40', 'text-red-500');
-            }
-        });
-    </script>
+      <article class="entry">
+        <h3 class="entry-date">2026-04-21</h3>
+        <ul>
+          <li>将Waterfall跨服改为Velocity跨服</li>
+          <li>将BungeeCord跨服改为Waterfall跨服</li>
+        </ul>
+      </article>
+
+      <article class="entry">
+        <h3 class="entry-date">2026-04-20</h3>
+        <ul>
+          <li>增加了登录服</li>
+          <li>增加了BungeeCord跨服</li>
+          <li>修改了反作弊配置，误封率大大减少</li>
+        </ul>
+      </article>
+
+      <article class="entry">
+        <h3 class="entry-date">2026-04-19</h3>
+        <ul>
+          <li>将服务器商从简幻欢换到了高诚云</li>
+          <li>史诗级的优化了服务器</li>
+          <li>将服务器核心从Paper改为Kitin</li>
+        </ul>
+      </article>
+
+      <article class="entry">
+        <h3 class="entry-date">2026-04-18</h3>
+        <ul>
+          <li>删除了某些可能导致神权的问题</li>
+        </ul>
+      </article>
+
+      <article class="entry">
+        <h3 class="entry-date">2026-04-17</h3>
+        <ul>
+          <li>新手礼包被设置为一把满配下界合金镐</li>
+          <li>新增了反作弊</li>
+          <li>将服务器核心设置为Paper</li>
+          <li>创建了SpeedSMP服务器</li>
+        </ul>
+      </article>
+    </section>
+
+    <p class="footer-note">SpeedSMP 服务器更新日志页</p>
+  </main>
 </body>
 </html>
